@@ -1,0 +1,237 @@
+\documentclass[a4paper,11pt]{article}
+\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+             % images in pdf, png or jpg format)
+
+\usepackage{jinstpub} % for details on the use of the package, please
+                     % see the JINST-author-manual
+
+
+\title{\boldmath CHROMIE: a new High-rate telescope. Detector simulation and commissioning}
+
+
+%% %simple case: 2 authors, same institution
+%% \author{A. Uthor}
+%% \author{and A. Nother Author}
+%% \affiliation{Institution,\\Address, Country}
+
+% more complex case: 4 authors, 3 institutions, 2 footnotes
+\author[a,1]{P. Asenov,\note{Corresponding author.}}
+\author[b]{J. Andrea,}
+\author[b]{C. Collard,}
+\author[c]{N. Deelen,}
+\author[a]{A. Kyriakis,}
+\author[a]{D. Loukas,}
+\author[c]{and S. Mersi}
+
+% The "\note" macro will give a warning: "Ignoring empty anchor..."
+% you can safely ignore it.
+
+\affiliation[a]{Institute of Nuclear and Particle Physics (INPP), NCSR Demokritos,\\Aghia Paraskevi, Greece}
+\affiliation[b]{Universit\'e de Strasbourg, CNRS, IPHC UMR 7178,\\F-67000 Strasbourg, France}
+\affiliation[c]{CERN, European Organization for Nuclear Research,\\Geneva, Switzerland}
+
+% e-mail addresses: only for the forresponding author
+\emailAdd{patrick.asenov.asenov@cern.ch}
+
+
+
+
+\abstract{The upgrade of the LHC to the High-Luminosity LHC (HL-LHC) is expected to increase the current instantaneous luminosity by a factor of 5 to 7, providing the opportunity to study rare processes and precision measurement of the standard model parameters. To cope with the increase in pile-up (up to 200), particle density and radiation, CMS will build new silicon tracking devices with higher granularity (to reduce occupancy) and improved radiation hardness. During the R\&D period, tests performed under beam are a powerful way to develop and examine the behavior of silicon sensors in realistic conditions. The telescopes used up to now have a slow readout ($<\: 10{\;} kHz$) for the needs of the CMS experiment, since the new outer-tracker modules have an effective return-to-zero time of $25\; ns$ (corresponding to a $40\; MHz$ frequency) and a trigger rate of $750\; kHz$. In order to test the CMS Tracker modules under the LHC nominal rate, a new pixel telescope named CHROMIE (CMS High Rate telescOpe MachInE) was designed, built and commissioned at CERN for beam tests with prototype modules for the CMS Phase-II Tracker upgrade. It is based on 16 CMS Phase-I Barrel Pixel modules of the same type as the ones used in the current CMS pixel detector. In this talk, the design of CHROMIE, the calibration of its modules, and its timing and synchronization aspects are presented, along with the first beam test results. In addition, the tracking algorithm developed for CHROMIE and a preliminary simulation study for the estimation of energy loss of primary particles, cluster multiplicity and spatial resolution are discussed.}
+
+
+
+\keywords{Detector modelling and simulations (interaction of radiation with matter), Interaction of radiation with matter, Radiation-hard detectors, Solid state detectors, Particle tracking detectors (Solid-state detectors), Detector alignment and calibration methods (particle-beams), Detector design and construction technologies and materials}
+
+
+\arxivnumber{1234.56789} % only if you have one
+
+
+% \collaboration{\includegraphics[height=17mm]{example-image}\\[6pt]
+%   XXX collaboration}
+% or
+\collaboration[c]{on behalf of the CMS collaboration}
+
+
+% if you write for a special issue this may be useful
+\proceeding{21$^{\text{st}}$  International Workshop on Radiation Imaging Detectors\\
+  7-12 July 2019 \\
+  Kolympari, Chania, Crete, Greece}
+
+
+
+\begin{document}
+\maketitle
+\flushbottom
+
+\section{Some examples and best-practices}
+\label{sec:intro}
+
+For internal references use label-refs: see section~\ref{sec:intro}.
+Bibliographic citations can be done with cite: refs.~\cite{a,b,c}.
+When possible, align equations on the equal sign. The package
+\texttt{amsmath} is already loaded. See \eqref{eq:x}.
+\begin{equation}
+\label{eq:x}
+\begin{split}
+x &= 1 \,,
+\qquad
+y = 2 \,,
+\\
+z &= 3 \,.
+\end{split}
+\end{equation}
+Also, watch out for the punctuation at the end of the equations.
+
+
+If you want some equations without the tag (number), please use the available
+starred-environments. For example:
+\begin{equation*}
+x = 1
+\end{equation*}
+
+The amsmath package has many features. For example, you can use use
+\texttt{subequations} environment:
+\begin{subequations}\label{eq:y}
+\begin{align}
+\label{eq:y:1}
+a & = 1
+\\
+\label{eq:y:2}
+b & = 2
+\end{align}
+and it will continue to operate across the text also.
+\begin{equation}
+\label{eq:y:3}
+c = 3
+\end{equation}
+\end{subequations}
+The references will work as you'd expect: \eqref{eq:y:1},
+\eqref{eq:y:2} and \eqref{eq:y:3} are all part of \eqref{eq:y}.
+
+A similar solution is available for figures via the \texttt{subfigure}
+package (not loaded by default and not shown here).
+All figures and tables should be referenced in the text and should be
+placed on the page where they are first cited or in
+subsequent pages. Positioning them in the source file
+after the paragraph where you first reference them usually yield good
+results. See figure~\ref{fig:i} and table~\ref{tab:i}.
+
+\begin{figure}[htbp]
+\centering % \begin{center}/\end{center} takes some additional vertical space
+\includegraphics[width=.4\textwidth,trim=30 110 0 0,clip]{example-image-a}
+\qquad
+\includegraphics[width=.4\textwidth,origin=c,angle=180]{example-image-b}
+% "\includegraphics" from the "graphicx" permits to crop (trim+clip)
+% and rotate (angle) and image (and much more)
+\caption{\label{fig:i} Always give a caption.}
+\end{figure}
+
+
+\begin{table}[htbp]
+\centering
+\caption{\label{tab:i} We prefer to have borders around the tables.}
+\smallskip
+\begin{tabular}{|lr|c|}
+\hline
+x&y&x and y\\
+\hline
+a & b & a and b\\
+1 & 2 & 1 and 2\\
+$\alpha$ & $\beta$ & $\alpha$ and $\beta$\\
+\hline
+\end{tabular}
+\end{table}
+
+We discourage the use of inline figures (wrapfigure), as they may be
+difficult to position if the page layout changes.
+
+We suggest not to abbreviate: ``section'', ``appendix'', ``figure''
+and ``table'', but ``eq.'' and ``ref.'' are welcome. Also, please do
+not use \texttt{\textbackslash emph} or \texttt{\textbackslash it} for
+latin abbreviaitons: i.e., et al., e.g., vs., etc.
+
+
+
+\section{Sections}
+\subsection{And subsequent}
+\subsubsection{Sub-sections}
+\paragraph{Up to paragraphs.} We find that having more levels usually
+reduces the clarity of the article. Also, we strongly discourage the
+use of non-numbered sections (e.g.~\texttt{\textbackslash
+  subsubsection*}).  Please also see the use of
+``\texttt{\textbackslash texorpdfstring\{\}\{\}}'' to avoid warnings
+from the hyperref package when you have math in the section titles
+
+
+
+\appendix
+\section{Some title}
+Please always give a title also for appendices.
+
+
+
+
+
+\acknowledgments
+Three of the authors (P.A., A.K. and D.L.) would like to 
+acknowledge the support by the Hellenic Foundation for 
+Research and Innovation, HFRI and the General Secretariat for
+Research and Technology GSRT (Greece). Two of the authors (J.A. 
+and C.C.) would like to acknowledge the support by the Centre 
+national de la recherche scientifique, CNRS (France).
+
+
+\paragraph{The CHROMIE team:} Bora Akg\"un, 
+J\'er\'emy Andrea, Patrick Asenov, Caroline Collard, Nikkie Deelen, Sandro Di
+Mattia, Gabrielle Hugo, Tivadar Kiss, Aristoteles
+Kyriakis, Dimitrios Loukas, Stefano Mersi, Nicolas
+Siegrist, Tam\'as T\"olyhi, Andromachi Tsirou, Viktor
+Veszpr\'emi.	
+\paragraph{Thanks to:} Imtiaz Ahmed, Eric Albert, Jonathan
+Fulcher, Dominik Gigi, Jean-Fran\c{c}ois Pernot,
+Hans Postema and Piero Giorgio Verdini for their
+support!
+
+
+
+
+
+
+% We suggest to always provide author, title and journal data:
+% in short all the informations that clearly identify a document.
+
+\begin{thebibliography}{99}
+	
+\bibitem{a}
+Author, \emph{Title}, \emph{J. Abbrev.} {\bf vol} (year) pg.
+
+\bibitem{b}
+Author, \emph{Title},
+arxiv:1234.5678.
+
+\bibitem{c}
+Author, \emph{Title},
+Publisher (year).
+
+\bibitem{a}
+Author, \emph{Title}, \emph{J. Abbrev.} {\bf vol} (year) pg.
+
+\bibitem{b}
+Author, \emph{Title},
+arxiv:1234.5678.
+
+\bibitem{c}
+Author, \emph{Title},
+Publisher (year).
+
+
+% Please avoid comments such as "For a review'', "For some examples",
+% "and references therein" or move them in the text. In general,
+% please leave only references in the bibliography and move all
+% accessory text in footnotes.
+
+% Also, please have only one work for each \bibitem.
+
+
+\end{thebibliography}
+\end{document}
