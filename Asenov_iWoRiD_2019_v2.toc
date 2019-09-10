@@ -1,0 +1,8 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Design and commissioning}{2}{section.2}
+\contentsline {section}{\numberline {3}Tracking and alignment}{4}{section.3}
+\contentsline {section}{\numberline {4}Test-beam data and simulation comparison}{5}{section.4}
+\contentsline {section}{\numberline {5}Conclusions}{7}{section.5}
+\contentsline {paragraph}{The CHROMIE team:}{8}{section*.3}
+\contentsline {paragraph}{Thanks to:}{8}{section*.4}
